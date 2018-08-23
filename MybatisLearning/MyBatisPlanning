@@ -1,0 +1,75 @@
+
+腾讯视频：Java高级教程—SpringMVC+Mybatis框架
+
+mybatis 的学习计划
+一、
+	对原生态 jdbc 程序 （单独使用 jdbc 开发） 问题总结
+	mybatis 框架原理
+	mybatis 入门程序
+		用户的 增、删、改、查
+	mybatis 开发 dao 两种方法
+		原始 dao 开发方法（程序需要辨析 dao 接口 dao 实现类） 掌握
+		mybatis 的 manager 接口 （相当于 dao 接口）代理开发方法 掌握
+	mybatis 配置文件 SqlMapConig.xml
+	mybatis 核心：
+		mybatis 输入映射 掌握
+		mybatis 输出映射 掌握
+	mybatis 的动态 sql  掌握
+二、高级知识
+	订单商品数据模型分析
+	高级结果集映射（一对一，一对多，多对多）
+	mybatis 和 延迟加载
+	mybatis 查询缓存（一级缓存、二级缓存）
+	mybatis 和 spring 进行整合
+	mybatis 逆向工程
+ ==============================================================================================
+准备：创建相应的数据库
+ sql_table_sql : 记录表结构
+ sql_data_sql : 记录测试数据，在实际企业开发中，最后提供的初始化 数据脚本
+一、对原生态 jdbc 程序 （单独使用 jdbc 开发） 问题总结
+	1、数据库使用时 创建 不使用时 立即释放，对数据库 进行频繁的开启和关闭。（造成数据库资源的浪费）
+		解决方案：使用数据库的连接池，管理数据库的链接
+	2、将 sql 语句 硬编码到 java 代码中，如果 sql 语句修改 ，需要重新编译 java 代码，不利于系统维护。
+		设想，将 sql 语句配置在 xml 配置文件中，及时 sql 变化，不需要java 代码进行重新编译。
+	3、想 preparedStatement 中设置参数，对占位富豪位置和设置参数值，硬编码在 java 代码中，不利于系统维护。
+		设想，将 sql 语句 和 占位符 和参数 ，全部配置在 xml 中
+	4、从 resultSet 中遍历结果集数据时，存在 硬编码，将获取表的字段进行硬编码，不利于系统维护。
+		设想，将查询结果集，自动映射出 java 的结果对象
+二、mybatis 框架
+
+	mybatis 持久层的框架，是 apache 下的 顶级项目
+	mybatis托管到 googlecode，后来托管到了 github 上。
+
+	mybatis 让程序员 主要精力放在 sql 上，通过 mybatis 提供的映射方式，自由灵活生成（半自动化，大部分需要程序员编写 sql) 满足需要 sql语句
+	mybatis 可以将 prepareStatement 中的输入参数自动进行输入映射，将查询结果集灵活映射 java 对象。（输出映射）
+
+
+	SqlMapConfig.xml （是 mybatis 的全局配置文件）
+	配置数据源，事务等 mybatis 运行环境 配置映射文件 （配置 sql 语句）
+
+	SqlSessionFactory （会话工厂）
+	作用：创建 SqlSession。
+
+	SqlSession （会话），是一个接口，面向有用户的接口
+	作用：操作数据库（发出 sql 增删改查）。
+
+	Executor（执行器），是一个接口（基本执行器、缓存执行器）
+	作用：SqlSession 通过 Executor 内部通过执行器操作数据
+
+
+	mappedstatement（底层封装对象）
+	作用：对操作数据库存储封装，包括 sql 语句，输入，参数，输出 结果类型
+
+	最后连上 MySQL
+
+	{
+		输入参数类型
+		简单的 hasmap
+		pojo 自定义
+	}
+	{	
+		输出结果类型
+		简单的 hasmap
+		pojo 自定义
+	}
+
