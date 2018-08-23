@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class DemoController {
-@RequestMapping(value="/demo1")
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+    @RequestMapping(value="/demo1")
+    public ModelAndView handleRequest0(HttpServletRequest request, HttpServletResponse response) throws Exception{
     System.out.println("/demo1");
         return  null;
     }
@@ -26,10 +27,30 @@ public class DemoController {
         request.getParameter("");
         return  null;
     }
-    @RequestMapping(value="/demo3")
+    @RequestMapping(value="/demo4")
     public ModelAndView handleRequest3(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws Exception{
         System.out.println("demo3");
         request.getParameter("");
         return  null;
+    }
+    @RequestMapping(value="/demo5")
+    public ModelAndView handleRequest3(String user) throws Exception{
+
+        String userss = user;
+        System.out.println(user);
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/demo.jsp");
+        mv.addObject("msg","第一个基于注解的 controller 方法");
+
+        return  mv;
+    }
+    @RequestMapping("/demo6")
+    public ModelAndView handleRequest6(String user) throws Exception{
+
+        String userss = user;
+        System.out.println(user);
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/demo.jsp");
+        mv.addObject("msg","第一个基于注解的 controller 方法");
+
+        return  mv;
     }
 }

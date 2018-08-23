@@ -1,6 +1,9 @@
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // Spring MVC 框架搭建及入门详解
 public class HelloWorldController implements Controller {
     @Override
@@ -10,8 +13,10 @@ public class HelloWorldController implements Controller {
 //        String user = httpServletRequest.getParameter("user");
 //        System.out.println("hello spring mvc:"+user);
         // 回显 参数
-        httpServletRequest.setAttribute("msg","hello srping mvc");
+//        httpServletRequest.setAttribute("msg","hello srping mvc");
 //        httpServletRequest.getRequestDispatcher("/WEB-INF/view/hello.jsp").forward(httpServletRequest,httpServletResponse);
+//        List<Dept> depts=deptService.getDpets();
+
         ModelAndView mv = new ModelAndView();
         // 没有回显到界面
         mv.addObject("msg","hello world!!!");
