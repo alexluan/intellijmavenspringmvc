@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <bean name="/helloworld" class="HelloWorldController"></bean>
-    <!--<bean name="/demo" class="cn.itsource.springmvc.DemoController"></bean>-->
+    <bean name="/demo" class="cn.itsource.springmvc.DemoController"></bean>
     <!--全注解-->
     <!--1、添加注解扫描，配置需要扫描的根目录-->
     <context:component-scan base-package="cn.itsource.springmvc"></context:component-scan>
